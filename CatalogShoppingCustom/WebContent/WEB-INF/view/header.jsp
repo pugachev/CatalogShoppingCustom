@@ -1,0 +1,1 @@
+<IMG SRC="/CatalogShoppingCustom/img/header.gif">
