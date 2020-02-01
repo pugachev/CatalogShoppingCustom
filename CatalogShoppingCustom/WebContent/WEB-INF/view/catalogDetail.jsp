@@ -3,7 +3,11 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-
+<script>
+	$(function () {
+		$('body > div > div.flex_search > table > tbody > tr > th > form > input[type=text]:nth-child(1)').val('');
+	});
+	</script>
   <TABLE border="0" width="100%" height="200" id="main_table">
      <TR width="400" bgColor=#bb5a5a valigh="top">
       <TH height="20"><FONT color=#ffffff>番号</FONT></TH>

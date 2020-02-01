@@ -4,14 +4,13 @@ package action.catalog;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Product;
-
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import dao.ProductDAOUtil;
+import model.Product;
 
 public class CatalogDetailShowAction extends Action {
 
@@ -29,6 +28,7 @@ public class CatalogDetailShowAction extends Action {
             pro = util.getProductById(form);
         }
         request.setAttribute("product", pro);
+        System.out.println((String)request.getSession().getAttribute("from"));
 
         return mapping.findForward("show");
     }

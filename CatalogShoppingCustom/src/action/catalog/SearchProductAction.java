@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -17,20 +16,27 @@ import model.Product;
 
 
 public class SearchProductAction extends Action {
-    
+
     public ActionForward execute(ActionMapping mapping,ActionForm form,HttpServletRequest request,HttpServletResponse response) throws Exception{
-        
-    	DynaActionForm dForm = (DynaActionForm)form;
-    	String keyword = (String)dForm.get("keyword");
-    	
-        CatalogDAO dao = new CatalogDAO();	
-    	
+
+    	String keyword="";
+    	request.setCharacterEncoding("UTF-8");
+    	keyword = (String)request.getParameter("keyword");
+    	if(keyword!=null && keyword.equals("")) {
+        	DynaActionForm dForm = (DynaActionForm)form;
+        	keyword = (String)dForm.get("keyword");
+    	}
+
+
+        CatalogDAO dao = new CatalogDAO();
+
         List<Product> list = dao.getProductList(keyword);
-        
+
         //1)キーワードにあてはまる商品一覧をセッションに格納
         request.getSession().setAttribute("products",list);
         request.setAttribute("offset","0");
-        
+        request.getSession().setAttribute("from", "keywordserach");
+
     	return mapping.findForward("list");
     }
 }

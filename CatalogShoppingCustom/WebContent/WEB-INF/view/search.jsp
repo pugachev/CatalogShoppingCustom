@@ -6,7 +6,11 @@
  <TR valign="top">
   <TH>
    品物の検索はこちらからどうぞ
-   <html:form action="/KeywordSearch" >
+<!-- 	<form name="KeyWordForm" method="get" action="/CatalogShoppingCustom/KeywordSearch.do">
+	    <input type="text" name="keyword" value="" id="keval">
+	    <input type="submit" value="検索" id="keysearchbtn">
+	</form> -->
+   <html:form action="/KeywordSearch" method="get">
     <html:text property="keyword" />
     <html:submit value="検索" />
    </html:form>
